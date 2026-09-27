@@ -1,0 +1,872 @@
+/*-- scss:defaults --*/
+
+/* =========================================================
+   0. SHARED TOKENS
+   ========================================================= */
+:root {
+  --muted-grey: #bcbbbb;
+  --warm-brown: #4B4238;
+  --heading-font: "Carlito", sans-serif;
+  --ochre: #B9873A;
+}
+
+/* =========================================================
+   1. NAVBAR
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1.1 — NAVBAR VERTICAL SPACING
+   --------------------------------------------------------- */
+
+.navbar {
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.6rem !important;
+}
+
+
+/* ---------------------------------------------------------
+   1.2 — LOGO SIZE
+   --------------------------------------------------------- */
+
+.navbar-brand-container img,
+.navbar-brand img {
+  height: 100px !important;
+  width: auto !important;
+  max-height: none !important;
+}
+
+
+/* ---------------------------------------------------------
+   1.3 — LOGO / BRAND ALIGNMENT
+   --------------------------------------------------------- */
+
+.navbar-brand-container,
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+
+/* ---------------------------------------------------------
+   1.4 — NAVIGATION LINK FONT SIZE
+   --------------------------------------------------------- */
+
+.navbar-nav .nav-link {
+  font-size: 20px !important;
+}
+
+
+/* =========================================================
+   2. TITLE BLOCK & CONTENT SPACING
+   ========================================================= */
+
+.quarto-title-block {
+  display: none;
+}
+
+#quarto-content,
+main.content,
+.content {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#quarto-content {
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+#quarto-content > *:first-child,
+main.content > *:first-child {
+  margin-top: 0 !important;
+}
+
+.nba-hero {
+  margin-top: 0 !important;
+}
+
+
+/* =========================================================
+   3. FULL-PAGE IMAGE BANNER
+   ========================================================= */
+
+.nba-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.nba-hero img {
+  display: block;
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.nba-hero-text {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  max-width: 40rem;
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* Default credit position — applies to every .nba-hero page
+   unless overridden below */
+.credit {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
+  font-size: 0.99rem;
+  color: white;
+  opacity: 0.8;
+}
+
+/* Override just for the status-change page — this page's
+   .nba-figs overlaps the hero by 110px, so its credit needs
+   to sit higher than the default */
+.nba-hero--status-change .credit {
+  font-size: 0.99rem;
+  bottom: 75px;   /* was 0.75rem — cleared the 110px .nba-figs overlap, +10px breathing room */
+}
+
+
+/*------------------------------------------------------------------
+  Eyebrow label
+  ------------------------------------------------------------------*/
+
+.eyebrow {
+  font-size: 1.1rem;
+}
+
+
+/* ===========================================================
+   4. KEY FIGURES / STATS BAR
+   =========================================================== */
+
+.nba-figs {
+  position: relative;
+  z-index: 2;
+  margin-top: -110px;
+  background: rgba(231, 239, 230, 0.96);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid #D9DED8;
+}
+
+
+/* ===========================================================
+   4.1 — STATS BAR INNER CONTAINER
+   =========================================================== */
+
+.nba-figs-inner {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 24px 35px;
+}
+
+
+/* ===========================================================
+   4.2 — INDIVIDUAL STATISTIC
+   =========================================================== */
+
+.nba-fig {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 22px;
+  border-left: 1px solid #C9D6C6;
+  text-align: left;
+  min-width: 0;
+}
+
+
+/* ===========================================================
+   4.3 — FIRST STATISTIC
+   =========================================================== */
+
+.nba-fig:first-child {
+  border-left: 0;
+}
+
+
+/* ===========================================================
+   4.4 — STATISTIC ICON
+   =========================================================== */
+
+.nba-fig .stat-icon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #02541a;
+  color: #FFFFFF;
+  font-size: 21px;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(28, 42, 32, 0.08);
+}
+
+
+/* ===========================================================
+   4.5 — ICON SVG
+   =========================================================== */
+
+.nba-fig .stat-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+
+/* ===========================================================
+   4.6 — STATISTIC TEXT
+   =========================================================== */
+
+.nba-fig .stat-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+
+/* ===========================================================
+   4.7 — LARGE STATISTIC NUMBER
+   =========================================================== */
+
+.nba-fig .value {
+  display: block;
+  font-size: 29px;
+  line-height: 1.05;
+  font-weight: 600;
+  color: #2C4433;
+}
+
+
+/* ===========================================================
+   4.8 — STATISTIC LABEL
+   =========================================================== */
+
+.nba-fig .label {
+  display: block;
+  margin-top: 7px;
+  font-size: 15px !important;
+  line-height: 1.3;
+  color: #47563F;
+
+  /* Reserve space for two lines of label text, even when a
+     label (e.g. "downlisted") only wraps to one line. Without
+     this, short labels produce a shorter content stack, which
+     shifts that stat's number down when it gets vertically
+     centered — this is what was causing "uplisted" and
+     "downlisted" to sit lower than the rest. */
+  min-height: 2.6em;
+}
+
+/* ===========================================================
+   4.9 — SPECIAL STATISTIC COLOURS
+   =========================================================== */
+
+/* UPLISTED */
+.nba-fig.is-uplisted .stat-icon {
+  background: #b43604;
+}
+
+.nba-fig.is-uplisted .value {
+  color: #b43604;
+}
+
+
+/* DOWNLISTED */
+.nba-fig.is-downlisted .stat-icon {
+  background: #7F8C83;
+}
+
+.nba-fig.is-downlisted .value {
+  color: #6F7B73;
+}
+
+
+/* NEW TYPES */
+.nba-fig.is-new .stat-icon {
+  background: #8D570C;
+}
+
+.nba-fig.is-new .value {
+  color: #8D570C;
+}
+
+
+/* UNCHANGED */
+.nba-fig.is-unchanged .stat-icon {
+  background: #C87E14;
+}
+
+.nba-fig.is-unchanged .value {
+  color: #C87E14;
+}
+
+
+/* ===========================================================
+   4.10 — MOBILE / SMALL-SCREEN LAYOUT
+   =========================================================== */
+
+@media (max-width: 1100px) {
+
+  .nba-figs-inner {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .nba-fig {
+    flex: 1 1 33.333%;
+    padding: 16px 18px;
+  }
+
+  .nba-fig:nth-child(4) {
+    border-left: 0;
+  }
+}
+
+
+/* ===========================================================
+   4.11 — SMALL MOBILE
+   =========================================================== */
+
+@media (max-width: 820px) {
+
+  .nba-figs {
+    margin-top: 0;
+    position: static;
+    background: #E7EFE6;
+  }
+
+  .nba-figs-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    padding: 10px 15px;
+  }
+
+  .nba-fig {
+    padding: 16px 10px;
+    border-left: 0;
+    border-top: 1px solid #C9D6C6;
+  }
+
+  .nba-fig:nth-child(-n+2) {
+    border-top: 0;
+  }
+
+  .nba-fig .stat-icon {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+    font-size: 18px;
+  }
+
+  .nba-fig .stat-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .nba-fig .value {
+    font-size: 24px;
+  }
+
+  .nba-fig .label {
+    font-size: 14px !important;
+  }
+}
+
+
+/* ===========================================================
+   4.12 — VERY SMALL SCREENS
+   =========================================================== */
+
+@media (max-width: 520px) {
+
+  .nba-figs-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .nba-fig:nth-child(2) {
+    border-top: 1px solid #C9D6C6;
+  }
+
+  .nba-fig {
+    padding: 14px 8px;
+  }
+}
+
+/* ===========================================================
+   4.13 — Authors
+   =========================================================== */
+
+.nba-authors {
+  text-align: left;
+  font-size: 1rem;
+  color: #444;
+  margin-top: 0.5rem;
+  margin-bottom: 0.1rem;
+}
+
+.orcid-icon {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+.nba-affiliation {
+  text-align: left;
+  font-size: 0.95rem;
+  color: #888;
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+}
+
+.nba-date {
+  text-align: left;
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* =========================================================
+   5. TWO-PANEL INFO CALLOUT
+   ========================================================= */
+
+.info-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background-color: #c7d2dc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1.5em 0;
+}
+
+.info-panel {
+  padding: 1.75rem 2rem;
+}
+
+.info-panel:first-child {
+  border-right: 1px solid rgba(101, 99, 99, 0.2);
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.info-icon-badge {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #5e6e7d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-header h4 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #FFFFFF;
+}
+
+.info-panel p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 2;
+  color: #090909;
+}
+
+@media (max-width: 700px) {
+
+  .info-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .info-panel:first-child {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* =========================================================
+   6. SIDEBAR / COLUMN-MARGIN
+   "At a glance" sidebar heading, stat blocks, and the
+   column-margin note heading/body.
+   ========================================================= */
+
+/* 6.1 — Column-margin note (heading + body), single source of truth */
+.column-margin {
+  font-size: 19px !important;
+  line-height: 1.9 !important;
+
+  p {
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+    color: var(--warm-brown) !important;
+  }
+
+  h2 {
+    font-size: 20px !important;
+    line-height: 1.5 !important;
+    font-family: var(--heading-font) !important;
+    font-weight: 600 !important;
+    margin: 0 0 8px 0 !important;
+    color: #6c6b6be2 !important;
+  }
+}
+
+/* 6.2 — "At a glance" sidebar heading
+   Requires the .qmd block to be:
+     ::: {.column width="30%" .sidebar}
+   Without that added class, this rule matches nothing. */
+.sidebar h2 {
+  font-size: 22px !important;
+  color: #6c6b6be2 !important;
+  margin: 0 0 22px 0 !important;
+  font-weight: 600 !important;
+  font-family: var(--heading-font) !important;
+  line-height: 1.7 !important;
+  padding-bottom: 10px !important;
+}
+
+/* 6.3 — Individual statistic container */
+.stat {
+  border-left: 3px solid var(--ochre) !important;
+  padding: 2px 0 18px 18px !important;
+  margin-bottom: 20px !important;
+}
+
+/* 6.4 — Large number */
+.stat .num {
+  display: block !important;
+  font-family: "Lora", serif !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: var(--muted-grey) !important;
+  line-height: 1.1 !important;
+}
+
+/* 6.5 — Description underneath number */
+.stat .desc {
+  font-size: 18px !important;
+  color: var(--warm-brown) !important;
+  margin-top: 4px !important;
+  line-height: 1.4 !important;
+}
+
+
+/* ===========================================================
+   6A. ICON CALLOUT — vertical line with overlapping icon badge
+   -----------------------------------------------------------
+   A text block (heading + paragraph) with a circular icon
+   badge sitting on top of a vertical ochre line, used for
+   standalone explanatory callouts (e.g. "types excluded from
+   the assessment"). Distinct from .stat (6.3–6.5): .stat is a
+   plain border-left with a number + description; this variant
+   has no number, and the line passes visually *through* the
+   icon rather than sitting to its left.
+
+   HTML shape this expects:
+     <div class="icon-callout">
+       <span class="icon-callout-icon"><svg>...</svg></span>
+       <div class="icon-callout-content">
+         <h4>Heading</h4>
+         <p>Body text</p>
+       </div>
+     </div>
+   =========================================================== */
+
+/* 6A.0 — Outer wrapper: lays icon and text side by side, and
+   is the positioning context for the vertical line (::before) */
+.icon-callout {
+
+  /* Makes this element the anchor for the ::before line below,
+     since that line is position: absolute and needs a
+     positioned ancestor to measure "top/left" against. */
+  position: relative;
+
+  /* Places the icon badge and the text content side by side
+     on one row, instead of stacking them. */
+  display: flex;
+
+  /* Horizontal space between the icon badge and the text. */
+  gap: 16px;
+
+  /* Small left inset so the vertical line (drawn at left: 20px
+     in 6A.1) doesn't sit flush against the callout's own edge —
+     space for the icon badge to sit on top of the line without
+     colliding with the text. */
+  padding-left: 6px;
+}
+
+/* 6A.1 — The vertical line itself. Drawn as a pseudo-element
+   (not a border) so the icon badge can visually overlap it —
+   a real border can't be layered under another element. */
+.icon-callout::before {
+
+  /* Required for any pseudo-element to render — an empty
+     string means the line has no text content, it's pure
+     decoration. */
+  content: "";
+
+  /* Takes the line out of normal document flow so it can be
+     placed precisely against .icon-callout (the relative
+     ancestor from 6A.0) instead of pushing other content. */
+  position: absolute;
+
+  /* Stretches the line from the very top of the callout... */
+  top: 0;
+
+  /* ...to the very bottom, so its height always matches
+     however tall the heading + paragraph turn out to be. */
+  bottom: 0;
+
+  /* Horizontal position of the line — aligns with the icon's
+     center */
+  left: 20px;
+
+  /* Thickness of the line. */
+  width: 3px;
+
+  /* Line colour, pulled from the shared ochre token in
+     section 0 so it stays consistent with .stat's border
+     colour (6.3) if that token ever changes. */
+  background: var(--ochre);
+}
+
+/* 6A.2 — Icon badge. position: relative + z-index: 1 lifts it
+   above the ::before line so the line appears to run behind/
+   through the circle rather than beside it. */
+.icon-callout-icon {
+
+  /* Creates its own stacking context so z-index below actually
+     takes effect — stacks above the ::before line */
+  position: relative;
+
+  /* Wins the stacking order against .icon-callout::before
+     (which has no explicit z-index, so defaults to 0). */
+  z-index: 1;
+
+  /* Flexbox sizing: don't grow, don't shrink, fixed base width
+     of 42px — keeps the badge a true circle regardless of how
+     much room the text content wants. */
+  flex: 0 0 42px;
+
+  /* Explicit width/height (in addition to flex-basis above) so
+     the circle's dimensions are unambiguous, matching the
+     border-radius rule below. */
+  width: 42px;
+  height: 42px;
+
+  /* 50% radius on a square element makes a perfect circle. */
+  border-radius: 50%;
+
+  /* Fill colour of the badge — same ochre token used for the
+     line, so the badge and line read as one continuous shape. */
+  background: var(--ochre);
+
+  /* Icon colour (the SVG uses fill: currentColor, so this
+     white becomes the icon's stroke/fill — see 6A.2.1). */
+  color: #FFFFFF;
+
+  /* Centers the SVG icon inside the circle, both horizontally
+     and vertically. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 6A.2.1 — Icon SVG sizing inside the badge */
+.icon-callout-icon svg {
+
+  /* Icon drawing area — smaller than the 42px badge so there's
+     visible padding/breathing room around the glyph. */
+  width: 20px;
+  height: 20px;
+
+  /* Picks up the badge's `color: #FFFFFF` (6A.2) via
+     currentColor, so the icon and its container theme
+     together — change one background variable and both
+     update. */
+  fill: currentColor;
+}
+
+/* 6A.3 — Text content wrapper. padding-top nudges the heading
+   down slightly so it roughly aligns with the icon's center
+   rather than its top edge. */
+.icon-callout-content {
+
+  /* Small top offset purely for optical alignment — without
+     it the heading's cap-height sits noticeably above the
+     badge's vertical center. */
+  padding-top: 6px;
+}
+
+/* 6A.3.1 — Callout heading */
+.icon-callout-content h4 {
+
+  /* Removes the browser's default h4 margin and replaces it
+     with a single bottom gap before the paragraph. */
+  margin: 0 0 6px 0;
+
+  /* Matches the heading font used elsewhere on the page
+     (e.g. .sidebar h2 in 6.2, .column-margin h2 in 6.1). */
+  font-family: var(--heading-font);
+
+  font-size: 19px;
+  font-weight: 700;
+
+  /* Same warm-brown token used for body copy throughout the
+     page (6.1, 6.5), so the heading reads as part of the same
+     palette rather than a separate accent colour. */
+  color: var(--warm-brown);
+
+  line-height: 1.3;
+}
+
+/* 6A.3.2 — Callout body text */
+.icon-callout-content p {
+
+  /* No default paragraph margin, since spacing here is
+     controlled entirely by the heading's margin-bottom above. */
+  margin: 0;
+
+  font-size: 15px;
+
+  /* Slightly more generous line-height than the heading, for
+     readability in longer runs of body text. */
+  line-height: 1.7;
+
+  color: var(--warm-brown);
+}
+
+
+/* =========================================================
+   7. DROP CAP
+   ========================================================= */
+
+.main-copy p .drop-cap {
+  font-family: "Lora", "Bitstream Charter", serif;
+  font-size: 4.2em;
+  line-height: 0.72;
+  float: left;
+  margin-right: 9px;
+  margin-top: 5px;
+  color: var(--ink);
+  font-weight: 500;
+  display: block;
+}
+
+
+/* =========================================================
+   8. CHANGE-MAP FIGURE
+   ========================================================= */
+
+#fig-change-map img {
+  width: 85% !important;
+  height: auto !important;
+  max-width: 85% !important;
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   9. BORDERED BOX
+   ============================================================ */
+
+.bordered-box {
+  border: 1px solid lightgray;
+  border-radius: 6px;
+
+  /* MARGIN = space OUTSIDE the box
+     Order: top right bottom left */
+
+  margin: 0 1.5em 0 0;
+}
+
+
+/* =====================================
+   10. CENTER TABLE AND FIGURE CAPTIONS
+   ===================================== */
+
+/* Center table captions */
+
+.gt_caption,
+.gt_heading .gt_title,
+.bordered-box caption {
+  text-align: center;
+}
+
+
+/* Center figure captions */
+
+figcaption,
+.figure-caption {
+  text-align: center;
+}
+
+
+/* ===========================================================
+   11. ALIGN COLUMN-MARGIN CONTENT WITH ADJACENT HEADINGS
+   =========================================================== */
+
+.column-margin {
+  margin-top: 8px;
+}
+
+
+/* If a heading directly precedes a margin note */
+
+h1 + .column-margin,
+h2 + .column-margin,
+h3 + .column-margin {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+
+/* =========================================================
+   12. FOOTER — EQUAL-WIDTH COLUMNS, TOP-ALIGNED
+   ========================================================= */
+
+.nav-footer {
+  display: flex !important;
+  align-items: flex-start !important;
+  min-height: 100px !important;
+}
+
+.nav-footer-left,
+.nav-footer-center,
+.nav-footer-right {
+  flex: 1 1 33.333% !important;
+  text-align: center;
+}

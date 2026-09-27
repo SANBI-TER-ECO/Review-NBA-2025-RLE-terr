@@ -1,0 +1,61 @@
+project:
+  type: website
+
+website:
+  title: ""
+
+  navbar:
+    logo: /Contents/images/nba-logo-combo.png
+    pinned: true # Keeps the navigation bar visible at the top as the user scrolls.
+
+    right:
+      - href: index.qmd
+        text: "Home"
+      - href: Contents/scripts/status_change.qmd
+        text: "Threat status changes"
+
+  page-footer: 
+    background: light
+    left: |
+      <div style="text-align: center; line-height: 1.4;">
+        <h4 style="margin-bottom: 0.3em; font-size: 1rem; font-weight: 400;"><a href="https://nba.sanbi.org.za/">About the NBA</a></h4>
+        <p style="margin-top: 0; font-size: 0.85rem;">
+          The National Biodiversity Assessment (NBA) is a <br> 
+          collaborative effort to synthesise the best available <br>
+          science on the status of South Africa's biodiversity. 
+        </p>
+      </div>
+
+    center: |
+      <div style="text-align: center; line-height: 1.4;">
+        <h4 style="margin-bottom: 0.3em; font-size: 1rem; font-weight: 400;"><a href="https://nba.sanbi.org.za/content/terrestrial/ter_ets.html">About the red-listing of terrestrial ecosystems</a></h4>
+        <p style="margin: 0.2em 0;">
+          The Red List of Ecosystems, is a headline indicator used <br>
+          in South Africa to report on biodiversity at the ecosystem level. <br> 
+          It was first systematically applied across all terrestrial ecosystems <br>
+          in 2018 and subsequently updated in 2025. </p>
+      </div>
+
+    right: |
+      <div style="margin-top: 0.5em; font-size: 0.85rem; text-align: center;">
+        <a href="https://github.com/SANBI-NBA" target="_blank" rel="noopener noreferrer">
+          <img src="/Contents/images/DFFE.png" alt="NBA on GitHub" style="height: 90px; weight: 90px; border: none;">
+        </a>
+      </div>
+
+format:
+  html:
+    toc: true
+    page-layout: full
+    grid:
+      body-width: 1300px      # widen the reading column (default ~800px)
+      margin-width: 220px     # shrink the TOC column, since it only needs to fit link text
+      gutter-width: 1.5rem    # spacing between columns — leave as-is unless it looks cramped
+
+    theme:
+      - cosmo
+      - brand
+      - custom.scss
+
+    css:
+      - styles.css
