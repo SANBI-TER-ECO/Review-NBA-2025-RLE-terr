@@ -1398,7 +1398,7 @@ summary["% of remaining natural habitat in South Africa"] = (
 
 ## Changes in ecosystem threat status between the 2022 gazetted list and the NBA 2025 list of threatened ecosystems{#sec-status-changes}
 
-@tbl-threatenedlist lists every ecosystem type that were listed as threatened on the NBA 2025 RLE assessments and shows what their threat status as published in the Government Gazette (Gazette Number 47526, Notice Number 2747), the transition between them, and its status change. Types that were newly delineated in the 2024 terrestrial ecosystem map are included where they were assessed as threatened. The sections below break these changes down by biome and by category transition.
+@tbl-threatenedlist lists every ecosystem type that were listed as threatened on the NBA 2025 RLE assessments and shows what their threat status as published in the Government Gazette (Gazette Number 47526, Notice Number 2747), the transition between them, and its status change. Types that were newly delineated in the 2024 terrestrial ecosystem map are included where they were assessed as threatened. The sections below break these changes down by biome and by category transition. Refer to @tbl-threatenedlist for quick view of the new list of threatened ecosystem.s
 
 ```{python}
 #| echo: false
@@ -1988,9 +1988,15 @@ show(
 
 ```
 
+::: {.callout-important collapse="false"}
+
 ### Review the revised threatened list
 
-The BPTWG members are invited to review the <a href="https://docs.google.com/spreadsheets/d/1Sm2SlZ7UgGlqnOoaGKtv2S9DMFC8SCeGEenoJv6--XI/edit?usp=sharing">revised list</a> and provide comments and recommendations directly in the sheet. Members are also encouraged to note any additional data they have access to for consideration in future revisions. Refer to @tbl-threatenedlist for quick view of the revised list of threatened ecosystems
+------------------------------------------
+
+The BPTWG stakeholders are invited to review the <a href="https://docs.google.com/spreadsheets/d/1Sm2SlZ7UgGlqnOoaGKtv2S9DMFC8SCeGEenoJv6--XI/edit?usp=sharing">revised list</a> and provide comments and recommendations directly in the sheet. The stakeholders are also encouraged to note any additional data they have access to for consideration in future revisions. 
+
+:::
 
 ### Number of ecosystem types per biome and status change
 
