@@ -1395,36 +1395,10 @@ summary["% of remaining natural habitat in South Africa"] = (
 
 ```
 
-<div class="icon-callout">
-<span class="icon-callout-icon">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path d="M20.5 3.5C13.4 3.7 7.9 6.1 5.3 10.1
-C3.2 13.3 4.1 17.2 7.1 19.1
-C10.1 21 14.1 20.2 16.8 17.4
-C19.5 14.6 20.7 9.8 20.5 3.5Z"/>
-<path d="M5 20C8.1 15.5 11.4 12.2 16.5 8.5"
-fill="none" stroke="currentColor"
-stroke-width="1.8" stroke-linecap="round"/>
-</svg>
-</span>
 
-<div class="icon-callout-content">
-<h4>Review the revised threatened list</h4>
+## Changes in ecosystem threat status between the 2022 gazetted list and the NBA 2025 list of threatened ecosystems{#sec-status-changes}
 
---------------------------------------
-
-<p>
-BPTWG members are invited to review the
-<a href="https://docs.google.com/spreadsheets/d/1Sm2SlZ7UgGlqnOoaGKtv2S9DMFC8SCeGEenoJv6--XI/edit?usp=sharing">revised list</a>
-and provide comments and recommendations directly in the sheet.
-Members are also encouraged to note any additional data they
-have access to for consideration in future revisions.
-Refer to @tbl-threatenedlist for quick view of the revised list of threatened ecosystems</a>.
-</p>
-</div>
-</div>
-
-## List of ecosystem types that changed threat status
+@tbl-threatenedlist lists every ecosystem type that were listed as threatened on the NBA 2025 RLE assessments and shows what their threat status as published in the Government Gazette (Gazette Number 47526, Notice Number 2747), the transition between them, and its status change. Types that were newly delineated in the 2024 terrestrial ecosystem map are included where they were assessed as threatened. The sections below break these changes down by biome and by category transition.
 
 ```{python}
 #| echo: false
@@ -1433,29 +1407,22 @@ Refer to @tbl-threatenedlist for quick view of the revised list of threatened ec
 #| html-table-processing: none
 #| classes: plain
 
-# ============================================================
-# INTERACTIVE THREATENED ECOSYSTEM TABLE
-# ============================================================
-# Styled to match the NBA website visual design:
-# - dark green table header
-# - cream background
-# - subtle alternating rows
-# - rounded status badges
-# - rounded status-change badges
-# - biome icons
-# - clean DataTables controls
-# ============================================================
+# =========================================================
+# 1. IMPORT PACKAGES
+# =========================================================
 
 from itables import show
 from IPython.display import display, HTML
 import pandas as pd
 
 
-# ============================================================
-# 1. PREPARE DATA
-# ============================================================
+# =========================================================
+# 2. PREPARE THE DATA
+# ---------------------------------------------------------
+# Keep only ecosystem types that are threatened in NBA 2025
+# and select the columns needed for the table.
+# =========================================================
 
-# ── Filter to threatened ecosystems and select relevant columns ──
 threatened = (
     RLE_subset[
         RLE_subset["RLE_2025"].isin(["CR", "EN", "VU"])
@@ -1470,7 +1437,6 @@ threatened = (
             "Status_Change",
         ]
     ]
-    # ── Sort rows for a consistent default table order ──
     .sort_values(
         [
             "Name",
@@ -1484,19 +1450,19 @@ threatened = (
     .reset_index(drop=True)
 )
 
-
-# ── Standardise "New types" to singular "New type" ──
+# Change "New types" to the shorter display label "New type"
 threatened["Status_Change"] = threatened["Status_Change"].replace(
     "New types",
     "New type"
 )
 
 
-# ============================================================
-# 2. PREPARE DISPLAY VALUES
-# ============================================================
+# =========================================================
+# 3. RENAME COLUMNS FOR DISPLAY
+# ---------------------------------------------------------
+# Use reader-friendly column names in the published table.
+# =========================================================
 
-# ── Rename columns to their human-readable display labels ──
 threatened_display = threatened.rename(
     columns={
         "RLE_2022": "RLE 2022",
@@ -1507,9 +1473,12 @@ threatened_display = threatened.rename(
 )
 
 
-# ── Add spacing around the transition symbol, keeping ↔ and → distinct ──
-# Unchanged ecosystems use ↔ (e.g. "CR↔CR"); changed ecosystems use →
-# (e.g. "CR→EN").
+# =========================================================
+# 4. FORMAT STATUS TRANSITIONS
+# ---------------------------------------------------------
+# Add spaces around arrows so transitions are easier to read.
+# =========================================================
+
 threatened_display["RLE 2022–2025"] = (
     threatened_display["RLE 2022–2025"]
     .astype(str)
@@ -1520,13 +1489,13 @@ threatened_display["RLE 2022–2025"] = (
 )
 
 
-# ============================================================
-# 3. BIOME ICONS
-# ============================================================
+# =========================================================
+# 5. BIOME ICONS
+# ---------------------------------------------------------
+# Add a small icon beside each biome name.
+# =========================================================
 
-# ── Lookup table mapping each biome name to a display icon ──
 biome_icons = {
-
     "Fynbos": "🌿",
     "Azonal Vegetation": "〰",
     "Desert": "🏜",
@@ -1537,16 +1506,12 @@ biome_icons = {
     "Nama Karoo": "🌿",
     "Succulent Karoo": "🌵",
     "Indian Ocean Coastal Belt": "🌴",
-
 }
 
 
-# ── Build the HTML markup for one Biome cell ──
 def format_biome(value):
-    """Add a small visual icon before the biome name."""
-    
     icon = biome_icons.get(value, "●")
-    
+
     return (
         f'<span class="nba-biome">'
         f'<span class="nba-biome-icon">{icon}</span>'
@@ -1555,18 +1520,15 @@ def format_biome(value):
     )
 
 
-# ============================================================
-# 4. CELL FORMATTING
-# ============================================================
+# =========================================================
+# 6. RLE STATUS BADGES
+# ---------------------------------------------------------
+# Format CR, EN and VU as coloured status badges.
+# =========================================================
 
-# ── Build the HTML markup for an RLE category cell (CR/EN/VU/LC) ──
 def format_status(value):
-    """
-    Format RLE threat categories as rounded status badges.
-    """
-    
     value = str(value)
-    
+
     return (
         f'<span class="nba-rle-badge nba-{value.lower()}">'
         f'{value}'
@@ -1574,23 +1536,19 @@ def format_status(value):
     )
 
 
-# ── Build the HTML markup for an RLE 2022→2025 transition cell ──
-# Coloured by the DESTINATION category (RLE 2025) — e.g. an ecosystem
-# that moved from LC (2022) to CR (2025) is coloured red, matching
-# the CR badge colour, since CR is where it ended up.
+# =========================================================
+# 7. STATUS TRANSITION BADGES
+# ---------------------------------------------------------
+# Use the final status to determine the colour of the
+# 2022 → 2025 transition badge.
+# =========================================================
+
 def format_transition(value):
-    """
-    Format RLE 2022–2025 transition as a rounded badge, coloured
-    by the ending (RLE 2025) category rather than the starting one.
-    """
-    
     value = str(value)
-    
-    # Split on either arrow type and take the LAST category — this
-    # is the RLE 2025 (destination) status, not the RLE 2022 origin.
+
     parts = value.replace("↔", "→").split("→")
     last_status = parts[-1].strip().lower()
-    
+
     return (
         f'<span class="nba-transition nba-transition-{last_status}">'
         f'{value}'
@@ -1598,23 +1556,25 @@ def format_transition(value):
     )
 
 
-# ── Build the HTML markup for a Status change cell ──
+# =========================================================
+# 8. STATUS CHANGE BADGES
+# ---------------------------------------------------------
+# Apply different styles to unchanged, uplisted and
+# newly identified ecosystem types.
+# =========================================================
+
 def format_change(value):
-    """
-    Format the Status change column.
-    """
-    
     value = str(value)
-    
+
     if value == "Uplisted":
         css_class = "nba-change-uplisted"
-    
+
     elif value == "New type":
         css_class = "nba-change-new"
-    
+
     else:
         css_class = "nba-change-unchanged"
-    
+
     return (
         f'<span class="nba-change {css_class}">'
         f'{value}'
@@ -1622,11 +1582,10 @@ def format_change(value):
     )
 
 
-# ============================================================
-# 5. APPLY HTML FORMATTING
-# ============================================================
+# =========================================================
+# 9. APPLY CELL FORMATTING
+# =========================================================
 
-# ── Attach each formatting function to its column ──
 styled_threatened = threatened_display.style.format(
     {
         "Biome": format_biome,
@@ -1639,34 +1598,31 @@ styled_threatened = threatened_display.style.format(
 )
 
 
-# ============================================================
-# 6. TABLE CSS
-# ============================================================
-# The CSS is injected immediately before the DataTable.
-# This allows the styling to affect the DataTables-generated
-# HTML without changing your Quarto page globally.
+# =========================================================
+# 10. TABLE CSS
+# ---------------------------------------------------------
+# White table, no zebra striping, compact rows and
+# restrained styling.
+# =========================================================
 
-# ── Inject a <style> block scoped to this table's HTML classes ──
 display(
     HTML(
         r"""
 <style>
 
 /* =========================================================
-   NBA THREATENED ECOSYSTEM TABLE
+   TABLE CONTAINER
    ========================================================= */
 
-/* Main DataTables container */
 .dataTables_wrapper {
     width: 100% !important;
     margin: 1.2rem 0 1.8rem 0;
-    /* font-family: "Carlito", "Segoe UI", sans-serif; */
 }
 
 
-/* ---------------------------------------------------------
-   SEARCH + LENGTH CONTROLS
-   --------------------------------------------------------- */
+/* =========================================================
+   LENGTH SELECTOR AND SEARCH
+   ========================================================= */
 
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter {
@@ -1676,51 +1632,45 @@ display(
     font-weight: 500;
 }
 
-
-/* Page-length selector */
 .dataTables_wrapper .dataTables_length select {
     min-width: 58px;
-    padding: 0.45rem 1.8rem 0.45rem 0.55rem;
+    padding: 0.35rem 1.6rem 0.35rem 0.5rem;
     border: 1px solid #C9D0C4;
-    border-radius: 8px;
-    background: #FAF9F5;
+    border-radius: 7px;
+    background: #FFFFFF;
     color: #1C2A20;
     font-size: 0.9rem;
 }
 
-
-/* Search label */
 .dataTables_wrapper .dataTables_filter label {
     display: flex;
     align-items: center;
     gap: 0.45rem;
 }
 
-
-/* Search box */
 .dataTables_wrapper .dataTables_filter input {
     width: 220px;
     margin-left: 0 !important;
-    padding: 0.58rem 0.8rem;
+    padding: 0.5rem 0.75rem;
     border: 1px solid #C9D0C4;
-    border-radius: 10px;
-    background: #FAF9F5;
+    border-radius: 8px;
+    background: #FFFFFF;
     color: #1C2A20;
     font-size: 0.92rem;
     outline: none;
 }
 
-
-/* Search box when selected */
 .dataTables_wrapper .dataTables_filter input:focus {
     border-color: #37533F;
     box-shadow: 0 0 0 3px rgba(55, 83, 63, 0.10);
 }
 
 
-/* ---------------------------------------------------------
-   MAIN TABLE
-   --------------------------------------------------------- */
+/* =========================================================
+   TABLE
+   ---------------------------------------------------------
+   Plain white table with no zebra striping.
+   ========================================================= */
 
 table.dataTable {
     width: 100% !important;
@@ -1729,304 +1679,220 @@ table.dataTable {
     border: 1px solid #D5D9D0;
     border-radius: 10px;
     overflow: hidden;
-    /* background: #FAF9F5; */
+    background: #FFFFFF !important;
     box-shadow: 0 2px 10px rgba(28, 42, 32, 0.05);
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    TABLE HEADER
-   --------------------------------------------------------- */
+   ========================================================= */
 
 table.dataTable thead th {
-    /* background: #37533F !important; */
-    /* color: #FFFFFF !important; */
     border-bottom: none !important;
-
-    padding: 0.85rem 0.9rem !important;
-
-    /* font-family: "Lora", Georgia, serif; */
+    padding: 0.75rem 0.9rem !important;
     font-size: 0.95rem;
     font-weight: 600;
-
     white-space: nowrap;
-
-    /* Center every header by default — the Name column
-       (first-child) is overridden to left-align below. */
     text-align: center !important;
 }
 
-
-/* Header hover */
 table.dataTable thead th:hover {
     background: #2C4433 !important;
 }
 
-
-/* ── Left-align the Name column header ── */
 table.dataTable thead th:first-child {
     text-align: left !important;
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    TABLE BODY
-   --------------------------------------------------------- */
+   ---------------------------------------------------------
+   White rows with NO alternating striping.
+   The smaller vertical padding reduces row height.
+   ========================================================= */
+
+table.dataTable tbody tr,
+table.dataTable tbody tr:nth-child(even),
+table.dataTable tbody tr:nth-child(odd) {
+    background: #FFFFFF !important;
+}
 
 table.dataTable tbody td {
-    padding: 0.72rem 0.9rem !important;
-
+    background: #FFFFFF !important;
+    padding: 0.35rem 0.8rem !important;
     border-top: 1px solid #E4E6E0 !important;
-
-    /* background: #FAF9F5; */
     color: #31453A;
-
     font-size: 0.91rem;
     vertical-align: middle;
-
-    /* Body text is normal weight, not bold */
     font-weight: 400;
-
-    /* Center every body cell by default — the Name column
-       (first-child) is overridden to left-align below. */
     text-align: center !important;
 }
 
 
-/* Alternating rows */
-table.dataTable tbody tr:nth-child(even) td {
-    /* background: #F2F3ED; */
-}
-
-
-/* Hover */
-table.dataTable tbody tr:hover td {
-    background: #E9EEE6 !important;
-}
-
-
-/* ---------------------------------------------------------
-   ECOSYSTEM NAME
-   --------------------------------------------------------- */
+/* =========================================================
+   FIRST COLUMN: ECOSYSTEM NAME
+   ========================================================= */
 
 table.dataTable tbody td:first-child {
     color: #173E45;
-    /* font-family: "Lora", Georgia, serif; */
     font-size: 0.94rem;
     font-weight: 400;
-
-    /* Left-align the Name column body text */
     text-align: left !important;
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    BIOME
-   --------------------------------------------------------- */
+   ---------------------------------------------------------
+   Smaller icon also helps keep rows compact.
+   ========================================================= */
 
 .nba-biome {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.55rem;
+    gap: 0.35rem;
     white-space: nowrap;
 }
-
 
 .nba-biome-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    width: 34px;
-    height: 34px;
-
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-
     background: #DCE8D5;
-
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    RLE STATUS BADGES
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .nba-rle-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    min-width: 58px;
-
-    padding: 0.28rem 0.8rem;
-
+    min-width: 56px;
+    padding: 0.22rem 0.7rem;
     border-radius: 999px;
-
-    /* font-family: "Lora", Georgia, serif; */
-    font-size: 0.86rem;
-
-    /* Unbolded — was font-weight: 700 */
+    font-size: 0.84rem;
     font-weight: 400;
-
-    line-height: 1.25;
+    line-height: 1.2;
 }
 
-
-/* Critical */
 .nba-cr {
     background: #FF0000;
     color: #FFFFFF;
 }
 
-
-/* Endangered */
 .nba-en {
     background: #FFAF42;
     color: #795519;
 }
 
-
-/* Vulnerable */
 .nba-vu {
     background: #FFE800;
     color: #59631B;
 }
 
-
-/* Least concern, if present */
 .nba-lc {
     background: #B4D79E;
     color: #315A35;
 }
 
 
-/* ---------------------------------------------------------
-   TRANSITION BADGES
-   -----------------------------------------------------------
-   Coloured by the DESTINATION (RLE 2025) category — see
-   format_transition() above. Colours match the RLE status
-   badges above (nba-cr, nba-en, nba-vu, nba-lc) so a reader
-   can connect the transition colour to the RLE 2025 badge
-   colour directly.
-   --------------------------------------------------------- */
+/* =========================================================
+   STATUS TRANSITION
+   ========================================================= */
 
 .nba-transition {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    min-width: 112px;
-
-    padding: 0.3rem 0.9rem;
-
+    min-width: 108px;
+    padding: 0.24rem 0.8rem;
     border-radius: 999px;
-
-    /* font-family: "Lora", Georgia, serif; */
-    font-size: 0.86rem;
-
-    /* Unbolded — was font-weight: 600 */
+    font-size: 0.84rem;
     font-weight: 400;
 }
 
-
-/* CR destination */
 .nba-transition-cr {
     background: #FF0000;
     color: #FFFFFF;
 }
 
-
-/* EN destination */
 .nba-transition-en {
     background: #FFAF42;
     color: #795519;
 }
 
-
-/* VU destination */
 .nba-transition-vu {
     background: #FFE800;
     color: #59631B;
 }
 
-
-/* LC destination — added, since a transition can end at LC too
-   (e.g. a downlisting), and this class previously did not exist */
 .nba-transition-lc {
     background: #B4D79E;
     color: #315A35;
 }
 
 
-/* ---------------------------------------------------------
-   STATUS CHANGE BADGES
-   --------------------------------------------------------- */
+/* =========================================================
+   STATUS CHANGE
+   ========================================================= */
 
 .nba-change {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    padding: 0.32rem 0.85rem;
-
+    padding: 0.24rem 0.75rem;
     border-radius: 999px;
-
-    /* font-family: "Lora", Georgia, serif; */
-    font-size: 0.85rem;
-
-    /* Unbolded — was font-weight: 600 */
+    font-size: 0.83rem;
     font-weight: 400;
-
     white-space: nowrap;
 }
 
-
-/* Unchanged */
 .nba-change-unchanged {
     background: #DDE2DD;
     color: #31544C;
 }
 
-
-/* Uplisted */
 .nba-change-uplisted {
     background: #EFD7B2;
     color: #86500F;
 }
 
-
-/* New type */
 .nba-change-new {
     background: #D1E3D3;
     color: #245B36;
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    PAGINATION
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .dataTables_wrapper .dataTables_paginate {
     margin-top: 0.8rem;
 }
 
-
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     border: 1px solid transparent !important;
     border-radius: 7px !important;
-    padding: 0.35rem 0.7rem !important;
+    padding: 0.3rem 0.65rem !important;
     color: #37533F !important;
 }
-
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     background: #E6ECE3 !important;
     border-color: #CBD5C7 !important;
     color: #2C4433 !important;
 }
-
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
     background: #37533F !important;
@@ -2035,9 +1901,9 @@ table.dataTable tbody td:first-child {
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    TABLE INFORMATION
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .dataTables_wrapper .dataTables_info {
     color: #667268;
@@ -2046,9 +1912,11 @@ table.dataTable tbody td:first-child {
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    MOBILE
-   --------------------------------------------------------- */
+   ---------------------------------------------------------
+   Keep the rows compact on smaller screens as well.
+   ========================================================= */
 
 @media (max-width: 900px) {
 
@@ -2058,7 +1926,7 @@ table.dataTable tbody td:first-child {
 
     table.dataTable tbody td,
     table.dataTable thead th {
-        padding: 0.65rem 0.7rem !important;
+        padding: 0.45rem 0.7rem !important;
     }
 
 }
@@ -2090,20 +1958,15 @@ table.dataTable tbody td:first-child {
 )
 
 
-# ============================================================
-# 7. RENDER DATATABLE
-# ============================================================
+# =========================================================
+# 11. DISPLAY THE INTERACTIVE TABLE
+# =========================================================
 
-# ── Display the styled DataFrame as a searchable DataTable ──
 show(
     styled_threatened,
-
-    # The HTML is generated by us above, so it is safe to render.
     allow_html=True,
 
-    # --------------------------------------------------------
-    # COLUMN WIDTHS
-    # --------------------------------------------------------
+    # Set the relative width of each column
     columnDefs=[
         {"targets": 0, "width": "27%"},
         {"targets": 1, "width": "17%"},
@@ -2113,31 +1976,23 @@ show(
         {"targets": 5, "width": "18%"},
     ],
 
-    # --------------------------------------------------------
-    # DATATABLE CONTROLS
-    # --------------------------------------------------------
+    # Interactive table options
     searching=True,
     paging=True,
-
-    # Keep the order produced by the pandas sort above.
     order=[],
-
-    # Allow the table to adapt to the available page width.
     scrollX=False,
-
-    # Ten rows per page, as in the mock-up.
     pageLength=10,
-
-    # Show the standard "10 entries per page" control.
     lengthChange=True,
-
-    # Keep the table compact and responsive.
     autoWidth=False,
 )
+
 ```
 
+### Review the revised threatened list
 
-## Number of ecosystem types per biome and status change
+The BPTWG members are invited to review the <a href="https://docs.google.com/spreadsheets/d/1Sm2SlZ7UgGlqnOoaGKtv2S9DMFC8SCeGEenoJv6--XI/edit?usp=sharing">revised list</a> and provide comments and recommendations directly in the sheet. Members are also encouraged to note any additional data they have access to for consideration in future revisions. Refer to @tbl-threatenedlist for quick view of the revised list of threatened ecosystems
+
+### Number of ecosystem types per biome and status change
 
 Ecosystem pressures are unevenly spread across the landscape, with some biomes under more pressure than others. Equally, efforts to improve the baseline data that inform the RLE assessments are uneven across the landscape. Various factors can be attributed to this, including differing conservation priorities, uneven distribution of funding and technical capacity, available expertise, and stakeholder involvement, among others. These factors also influence the iterative update of South Africa's terrestrial ecosystem map, with different regions of the map updated with each iteration. Oftentimes, the refinements occur at different scales depending on the source data used for refinement, and some regions of the map have remained unchanged since 2006.
 
@@ -2354,7 +2209,7 @@ plt.close(fig)
 ```
 
 
-## Changes in ecosystem threat status between the 2022 gazetted list and the NBA 2025 list of threatened ecosystems
+### Transition matrix
 
 A transition matrix was used to quantify transitions in ecosystem threat status between the 2022 gazetted list of threatened ecosystems and the NBA 2025 list of threatened ecosystems (@fig-transitionmatrix). The diagonal cells represent ecosystem types whose threat status remained unchanged between the two lists, while cells above the diagonal represent downlisted ecosystem types (i.e. ecosystems whose threat status improved) and cells below the diagonal represent uplisted ecosystem types (i.e. ecosystems whose threat status worsened).
 

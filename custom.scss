@@ -848,7 +848,8 @@ figcaption,
 
 h1 + .column-margin,
 h2 + .column-margin,
-h3 + .column-margin {
+h3 + .column-margin,
+h4 + .column-margin {
   margin-top: 0;
   padding-top: 0;
 }
@@ -869,4 +870,37 @@ h3 + .column-margin {
 .nav-footer-right {
   flex: 1 1 33.333% !important;
   text-align: center;
+}
+
+/* =========================================================
+   13. DataTable
+   ========================================================= */
+
+/* #--- WHITE TABLE
+   Removes zebra striping
+   #--- */
+
+.dataTables_wrapper table.dataTable tbody tr.odd,
+.dataTables_wrapper table.dataTable tbody tr.even,
+.dataTables_wrapper table.dataTable tbody tr {
+    background-color: #FFFFFF !important;
+}
+
+/* #--- COMPACT ROWS
+   Reduces vertical row height
+   #--- */
+
+table.dataTable tbody td {
+  background: #FFFFFF !important;
+  padding: 0.35rem 0.8rem !important;
+}
+
+
+/* #--- COMPACT BIOME ICON
+   Prevents the icon from making rows unnecessarily tall
+   #--- */
+
+.nba-biome-icon {
+  width: 24px;
+  height: 24px;
 }
