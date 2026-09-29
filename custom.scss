@@ -804,7 +804,7 @@ main.content > *:first-child {
    ============================================================ */
 
 .bordered-box {
-  border: 1px solid lightgray;
+  border: 1px solid #FFFFFF;
   border-radius: 6px;
 
   /* MARGIN = space OUTSIDE the box
@@ -903,4 +903,19 @@ table.dataTable tbody td {
 .nba-biome-icon {
   width: 24px;
   height: 24px;
+}
+
+/* =========================================================
+Remove the underline/border from ORCID links 
+/* =========================================================*/
+.nba-authors a.orcid-link,
+.nba-authors a.orcid-link:hover {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Blank space after the comma that separates author names */
+.nba-authors .author-sep {
+  margin-right: 0.6em;   /* increase/decrease to taste */
 }

@@ -8,6 +8,7 @@ author:
   - name: "Andrew Skowno"
   - name: "Mthobisi Nzimande"
   - name: "Anisha Dayaram"
+  - name: "Tammy Smith"
 
 execute:
   echo: false
@@ -819,33 +820,51 @@ display(
 
 ```
 
+
 ```{=html}
 <p class="nba-authors">
   Maphale Monyeki<sup>1</sup>
-  <a href="https://orcid.org/0000-0002-5083-7461" target="_blank" rel="noopener" aria-label="Maphale Monyeki's ORCID profile">
-    <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" alt="ORCID iD" class="orcid-icon">
-  </a>
+  <a href="https://orcid.org/0000-0002-5083-7461"
+     target="_blank"
+     rel="noopener"
+     aria-label="Maphale Monyeki's ORCID profile"
+     class="orcid-link">
+    <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png"
+         alt="ORCID iD"
+         class="orcid-icon">
+  </a><span class="author-sep">,</span>
 
-  &middot;
   Andrew Skowno<sup>2,3</sup>
-  <a href="orcid.org/0000-0002-2726-7886" target="_blank" rel="noopener" aria-label="Andrew Skowno's ORCID profile">
-    <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" alt="ORCID iD" class="orcid-icon">
-  </a>
+  <a href="https://orcid.org/0000-0002-2726-7886"
+     target="_blank"
+     rel="noopener"
+     aria-label="Andrew Skowno's ORCID profile"
+     class="orcid-link">
+    <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png"
+         alt="ORCID iD"
+         class="orcid-icon">
+  </a><span class="author-sep">,</span>
 
-    &middot;
-  Mthobisi Nzimande<sup>1</sup>
-  
-  &middot;
+  Mthobisi Nzimande<sup>1</sup><span class="author-sep">,</span>
+
   Anisha Dayaram<sup>1,4</sup>
-  <a href="0000-0003-4160-812X" target="_blank" rel="noopener" aria-label="Andrew Skowno's ORCID profile">
-    <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" alt="ORCID iD" class="orcid-icon">
-  </a>
-</p>
+  <a href="https://orcid.org/0000-0003-4160-812X"
+     target="_blank"
+     rel="noopener"
+     aria-label="Anisha Dayaram's ORCID profile"
+     class="orcid-link">
+    <img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png"
+         alt="ORCID iD"
+         class="orcid-icon">
+  </a><span class="author-sep">,</span>
+
+  Tammy Smith<sup>1</sup>
+</p> <!-- closing tag was missing in the original -->
 
 <p class="nba-affiliation">
-  <sup>1</sup> South African National Biodiversity Institute (SANBI) &nbsp;&middot;&nbsp;
-  <sup>2</sup> Group on Earth Observations (GEO) &nbsp;&middot;&nbsp;
-  <sup>3</sup> University of Cape Town (UCT) &nbsp;&middot;&nbsp;
+  <sup>1</sup> South African National Biodiversity Institute (SANBI)<span class="aff-sep">,</span>
+  <sup>2</sup> Group on Earth Observations (GEO)<span class="aff-sep">,</span>
+  <sup>3</sup> University of Cape Town (UCT)<span class="aff-sep">,</span>
   <sup>4</sup> University of the Witwatersrand
 </p>
 
@@ -868,22 +887,22 @@ display(HTML(f'<p class="nba-date">Published: {today_str}</p>'))
 ## Introduction
 
 <div class="main-copy">
-  <p><span class="drop-cap">I</span>n 2025, the fourth iteration of the [National Biodiversity Assessment (NBA)](https://nba.sanbi.org.za/) was released, building on more than two decades of national biodiversity assessments. The NBA reports on the state of biodiversity in South Africa using a suite of headline indicators, including the [Red List of Ecosystems (RLE)](iucn.org/resources/conservation-tool/iucn-red-list-ecosystems), also referred to as ecosystem threat status. This indicator forms part of the growing toolbox of ecosystem indicators recognised within the Kunming-Montreal Global Biodiversity Framework of the Convention on Biological Diversity, to which South Africa is a signatory.</p>
+  <p><span class="drop-cap">I</span>n 2025, the fourth iteration of the [National Biodiversity Assessment (NBA)](https://nba.sanbi.org.za/) was released, building on more than two decades of biodiversity assessments at a national scale. The NBA is a national monitoring and reporting tool that synthesises information on the state of biodiversity in South Africa using a suite of headline indicators, including the [Red List of Ecosystems (RLE)](iucn.org/resources/conservation-tool/iucn-red-list-ecosystems), also referred to as ecosystem threat status. This indicator also forms part of the growing toolbox of ecosystem indicators recognised within the Kunming-Montreal Global Biodiversity Framework of the Convention on Biological Diversity (CBD), to which South Africa is a signatory.</p>
   </div>
 
 The ecosystem threat status indicator is one of the longest-standing indicators reported through the NBA. In the absence of a globally recognised standard for assessing ecosystem threat status, South Africa developed and applied its own national criteria. These criteria were first systematically applied to terrestrial ecosystems, with the findings reported in the [National Spatial Biodiversity Assessment (NSBA) 2004](https://bgis.sanbi.org/Projects/Detail/55). This national approach demonstrated the feasibility of assessing the threat status of broad ecological features such as ecosystems, despite their complex and dynamic nature.
 
-Following this initial assessment, the national criteria were refined to improve the robustness and consistency of their application and expanded to incorporate additional criteria and data. These developments enabled more detailed and comprehensive assessments of ecosystem threat status, with the findings summarised in the NBA 2011 report. To strengthen the influence of these assessments on policy and decision-making, the 2011 list of threatened ecosystems was subsequently gazetted under the [National Environmental Management: Biodiversity Act (NEMBA)](https://www.gov.za/documents/national-environmental-management-biodiversity-act-2011). Gazetting provided a formal legal basis for incorporating threatened ecosystems into higher-level legal, regulatory, and planning instruments, thereby supporting their conservation and management.
+Following this initial assessment, the national criteria were refined to improve the robustness and consistency of their application and expanded to incorporate additional criteria and data. These developments enabled more detailed and comprehensive assessments of ecosystem threat status, with the findings summarised in the NBA 2011 report. To strengthen the influence of these assessments on policy and decision-making, the 2011 list of threatened ecosystems was subsequently gazetted in 2011 under the [National Environmental Management: Biodiversity Act (NEMBA)](https://www.gov.za/documents/national-environmental-management-biodiversity-act-2011). Gazetting provided a formal legal basis for incorporating threatened ecosystems into higher-level legal, regulatory, and planning instruments, thereby supporting their conservation and management interventions.
 
-Although South Africa has a long history of assessing ecosystem threat status, it subsequently adopted the International Union for Conservation of Nature (IUCN) Red List of Ecosystems (RLE) framework in 2018. The RLE framework provides a globally consistent approach for assessing the risk of ecosystem collapse. Its adoption has strengthened the consistent application of ecosystem threat assessments across South Africa’s diverse ecosystem realms and improved comparability among regions. It has also facilitated the integration of ecosystem threat status into global biodiversity monitoring and reporting frameworks and contributed to efforts to develop a comprehensive global list of threatened ecosystems.
+Although South Africa has a long history of assessing ecosystem threat status, it subsequently adopted the International Union for Conservation of Nature (IUCN) RLE framework in 2018. The RLE framework provides a globally consistent approach for assessing the risk of ecosystem collapse. Its adoption has strengthened the consistent application of ecosystem threat assessments across South Africa’s diverse ecosystem realms and improved comparability among regions. It has also facilitated the integration of ecosystem threat status into global biodiversity monitoring and reporting frameworks and contributed to efforts to develop a comprehensive global list of threatened ecosystems.
 
-The IUCN RLE criteria and categories were first applied systematically across all of South Africa's terrestrial ecosystems and published the findings in the [NBA 2018](https://opus.sanbi.org/items/84c7907f-10e2-405d-ba98-d383d8e87fd3) report. These efforts represented the country's first national attempt at in aligning with the IUCN RLE standards, thereby producing the national list of threatened ecosystem, which was subsequently gazetted in 2022 following an extensive stakeholder consultation process. The NBA 2018 RLE assessments incorporated improved ecosystem mapping, recent and readily available pressures data, the application of the RLE criteria and categories, representing a substantial methodological change from the approach previously used nationally approach. Consequently, the threatened ecosystem lists gazetted in 2011 and 2022 are not directly comparable, and differences between the two lists should not be interpreted as evidence of changes in ecosystem threat status alone. Rather, these differences reflect changes in the assessment framework, improvements in the delineation of ecosystem types in some parts of the country, and differences in the availability, coverage and quality of the underlying pressures data.
+The IUCN RLE criteria and categories were first applied systematically across all of South Africa's terrestrial ecosystems and published the findings in the [NBA 2018](https://opus.sanbi.org/items/84c7907f-10e2-405d-ba98-d383d8e87fd3) report. These efforts represented the country's first national attempt at in aligning with the IUCN RLE standards, thereby producing the national list of threatened ecosystem, which was subsequently gazetted in 2022 following an extensive stakeholder review process. The NBA 2018 RLE assessments incorporated improved ecosystem mapping, recent and readily available pressures data, and the application of the RLE criteria and categories, which represented a substantial methodological change from the approach previously used nationally. Consequently, the threatened ecosystem lists gazetted in 2011 and 2022 are not directly comparable, and differences between the two lists should not be interpreted as evidence of changes in ecosystem threat status alone. Rather, these differences reflect changes in the assessment framework, improvements in the delineation of ecosystem types in some parts of the country, and differences in the availability, coverage and quality of the underlying pressures data.The timeline of RLE application to South Africa’s terrestrial ecosystems is illustrated in @fig-timeline.
 
-![[The timeline of application of the ecosystem threat status (Red List of Ecosystems) indicator](https://www.sanbi.org/applied-biodiversity-research/threatened-ecosystem-research/) (© Jem Shelton; schematic: Maphale Monyeki)](../images/webpage.png){#fig-label width="80%"}
+![[The timeline of application of the ecosystem threat status (Red List of Ecosystems) indicator](https://www.sanbi.org/applied-biodiversity-research/threatened-ecosystem-research/) (© Jem Shelton; schematic: Maphale Monyeki)](../images/webpage.png){#fig-timeline width="80%"}
 
-While the [NBA 2025](https://nba.sanbi.org.za/) represents the fourth reporting on the state of the country's biodiversity, it also represents the second update of the RLE indicator, incorporating an improved terrestrial ecosystem map, land cover, and invasive alien plant species data. With each iteration of the NBA, the RLE indicator is updated using the most current data available to reflect the present state of terrestrial ecosystems. Changes in threat status between iterations can signal genuine spatial decline driven by new or intensifying threats, they may also result from improvements to the underlying input data. A key example is the terrestrial ecosystem map, which is refined with each NBA iteration as new field evidence, improved mapping tools, and a better understanding of plant community distributions, biodiversity patterns, and ecological dynamics become available. These refinements can lead to minor or major  increases or decreases in ecosystem extent, and may result in the introduction of new ecosystem types or supersede the existing ones. In the current assessment, eight new ecosystem types were introduced and the Blombos Strandveld ecosystem was replaced by newly delineated types informed by local contributor data. While these ongoing improvements bring the map progressively closer to an accurate representation of historical ecosystem extents, they also influence threat status, particularly for ecosystems assessed under IUCN RLE Criterion A (Reduction in geographic distribution) and Criterion B (Restricted geographic distribution) (Dayaram et al. 2026 in prep).
+While the [NBA 2025](https://nba.sanbi.org.za/) represents the fourth reporting on the state of the country's biodiversity, it also represents the second update of the RLE indicator, incorporating an improved terrestrial ecosystem map, land cover, and invasive alien plant species data. With each iteration of the NBA, the RLE indicator is updated using the most current data available to reflect the present state of terrestrial ecosystems. Changes in threat status between iterations can signal genuine spatial decline driven by new or intensifying threats, they may also result from improvements to the underlying input data. A key example is the terrestrial ecosystem map, which is refined with each NBA iteration as new field evidence, improved mapping tools, and a better understanding of plant community distributions, biodiversity patterns, and ecological dynamics become available. These refinements can lead to minor or major  increases or decreases in ecosystem extent, and may result in the introduction of new ecosystem types or supersede the existing ones. In the current assessment, eight new ecosystem types were introduced and the Blombos Strandveld ecosystem was replaced by newly delineated types informed by local contributor data. While these ongoing improvements bring the map progressively closer to an accurate representation of historical ecosystem extents, they also influence threat status, particularly for ecosystems assessed under IUCN RLE Criterion A (Reduction in geographic distribution) and Criterion B (Restricted geographic distribution) (Dayaram et al. 2026 in prep). 
 
-![NBA reports iterations (2004, 2011, 2018 and 2025 versions)](../images/nba2004-2025.png){#fig-label width="80%"}
+![NBA reports iterations (2004, 2011, 2018 and 2025 versions)](../images/nba2004-2025.png){#fig2-label width="80%"}
 
 **Here, we provide a summary of ecosystem status changes across the following:**
 
@@ -1408,9 +1427,27 @@ summary["% of remaining natural habitat in South Africa"] = (
 #| classes: plain
 
 # =========================================================
+# THREATENED ECOSYSTEM TYPES TABLE
+# ---------------------------------------------------------
+# Displays terrestrial ecosystem types that are threatened
+# in the NBA 2025 assessment and compares their status with
+# the 2022 gazetted list.
+#
+# Initial table order:
+#   1. Uplisted
+#   2. New type
+#   3. Unchanged
+#
+# Within each status-change group, ecosystem types are
+# sorted alphabetically by ecosystem name.
+# =========================================================
+
+
+# =========================================================
 # 1. IMPORT PACKAGES
 # =========================================================
 
+import re  # used to split the RLE 2022–2025 transition text
 from itables import show
 from IPython.display import display, HTML
 import pandas as pd
@@ -1426,8 +1463,7 @@ import pandas as pd
 threatened = (
     RLE_subset[
         RLE_subset["RLE_2025"].isin(["CR", "EN", "VU"])
-    ]
-    [
+    ][
         [
             "Name",
             "Biome",
@@ -1437,20 +1473,17 @@ threatened = (
             "Status_Change",
         ]
     ]
-    .sort_values(
-        [
-            "Name",
-            "Biome",
-            "RLE_2022",
-            "RLE_2025",
-            "RLE2022_2025",
-            "Status_Change",
-        ]
-    )
-    .reset_index(drop=True)
+    .copy()
 )
 
-# Change "New types" to the shorter display label "New type"
+
+# =========================================================
+# 3. STANDARDISE STATUS-CHANGE LABELS
+# ---------------------------------------------------------
+# Change "New types" to the shorter display label
+# "New type".
+# =========================================================
+
 threatened["Status_Change"] = threatened["Status_Change"].replace(
     "New types",
     "New type"
@@ -1458,7 +1491,62 @@ threatened["Status_Change"] = threatened["Status_Change"].replace(
 
 
 # =========================================================
-# 3. RENAME COLUMNS FOR DISPLAY
+# 4. SET THE STATUS-CHANGE ORDER
+# ---------------------------------------------------------
+# Pandas normally sorts text alphabetically.
+#
+# We instead define a custom order so that the table starts
+# with:
+#
+#   Uplisted
+#   New type
+#   Unchanged
+#
+# This ordering is also retained when the table is initially
+# rendered.
+# =========================================================
+
+status_order = [
+    "Uplisted",
+    "New type",
+    "Unchanged"
+]
+
+threatened["Status_Change"] = pd.Categorical(
+    threatened["Status_Change"],
+    categories=status_order,
+    ordered=True
+)
+
+
+# =========================================================
+# 5. SORT THE DATA
+# ---------------------------------------------------------
+# Sort primarily by the custom Status_Change order.
+#
+# Within each status-change group, sort alphabetically by
+# ecosystem name, followed by biome and the RLE status
+# information.
+# =========================================================
+
+threatened = (
+    threatened
+    .sort_values(
+        [
+            "Status_Change",
+            "Name",
+            "Biome",
+            "RLE_2022",
+            "RLE_2025",
+            "RLE2022_2025",
+        ]
+    )
+    .reset_index(drop=True)
+)
+
+
+# =========================================================
+# 6. RENAME COLUMNS FOR DISPLAY
 # ---------------------------------------------------------
 # Use reader-friendly column names in the published table.
 # =========================================================
@@ -1474,7 +1562,7 @@ threatened_display = threatened.rename(
 
 
 # =========================================================
-# 4. FORMAT STATUS TRANSITIONS
+# 7. FORMAT STATUS TRANSITIONS
 # ---------------------------------------------------------
 # Add spaces around arrows so transitions are easier to read.
 # =========================================================
@@ -1490,7 +1578,7 @@ threatened_display["RLE 2022–2025"] = (
 
 
 # =========================================================
-# 5. BIOME ICONS
+# 8. BIOME ICONS
 # ---------------------------------------------------------
 # Add a small icon beside each biome name.
 # =========================================================
@@ -1510,6 +1598,12 @@ biome_icons = {
 
 
 def format_biome(value):
+    """
+    Add an icon beside the biome name.
+    If a biome is not found in the dictionary,
+    use a simple circular marker.
+    """
+    
     icon = biome_icons.get(value, "●")
 
     return (
@@ -1521,12 +1615,16 @@ def format_biome(value):
 
 
 # =========================================================
-# 6. RLE STATUS BADGES
+# 9. RLE STATUS BADGES
 # ---------------------------------------------------------
 # Format CR, EN and VU as coloured status badges.
 # =========================================================
 
 def format_status(value):
+    """
+    Convert the RLE status into an HTML badge.
+    """
+
     value = str(value)
 
     return (
@@ -1537,33 +1635,89 @@ def format_status(value):
 
 
 # =========================================================
-# 7. STATUS TRANSITION BADGES
+# 10. STATUS TRANSITION CHIPS
 # ---------------------------------------------------------
-# Use the final status to determine the colour of the
-# 2022 → 2025 transition badge.
+# Show the RLE 2022–2025 transition as two small chips,
+# one for each status, joined by an arrow:
+#
+#   [LC] → [EN]
+#
+# Each chip uses its own RLE colour, so the reader can see
+# where the ecosystem started and where it ended up. This
+# replaces the previous single badge that was coloured by
+# the final status only.
 # =========================================================
 
+# RLE categories that have a colour defined in the CSS.
+# Any other label (e.g. "NE" or "New") gets a neutral chip.
+rle_chip_classes = {"cr", "en", "vu", "nt", "lc"}
+
+
 def format_transition(value):
+    """
+    Format the RLE 2022–2025 transition as two colour-coded
+    chips separated by an arrow.
+
+    The arrow used in the data (→ or ↔) is kept as it is.
+    """
+
     value = str(value)
 
-    parts = value.replace("↔", "→").split("→")
-    last_status = parts[-1].strip().lower()
+    # Split on the arrow but keep the arrow itself in the result,
+    # e.g. "LC → EN" becomes ["LC", "→", "EN"]
+    parts = re.split(r"\s*(→|↔)\s*", value)
 
+    html_parts = []
+
+    for part in parts:
+
+        part = part.strip()
+
+        # Skip any empty pieces
+        if not part:
+            continue
+
+        # Arrow between the two chips
+        if part in ("→", "↔"):
+            html_parts.append(f'<span class="nba-arrow">{part}</span>')
+
+        # Status chip, coloured by its own RLE category
+        else:
+            key = part.lower()
+
+            css_class = (
+                f"nba-{key}"
+                if key in rle_chip_classes
+                else "nba-chip-other"
+            )
+
+            html_parts.append(
+                f'<span class="nba-chip {css_class}">{part}</span>'
+            )
+
+    # The title gives the full transition as a tooltip on hover
     return (
-        f'<span class="nba-transition nba-transition-{last_status}">'
-        f'{value}'
+        f'<span class="nba-transition" title="{value}">'
+        f'{"".join(html_parts)}'
         f'</span>'
     )
 
 
 # =========================================================
-# 8. STATUS CHANGE BADGES
+# 11. STATUS CHANGE BADGES
 # ---------------------------------------------------------
-# Apply different styles to unchanged, uplisted and
-# newly identified ecosystem types.
+# Apply different styles to:
+#
+#   • Unchanged
+#   • Uplisted
+#   • New type
 # =========================================================
 
 def format_change(value):
+    """
+    Format the Status change column as a coloured badge.
+    """
+
     value = str(value)
 
     if value == "Uplisted":
@@ -1583,7 +1737,13 @@ def format_change(value):
 
 
 # =========================================================
-# 9. APPLY CELL FORMATTING
+# 12. APPLY CELL FORMATTING
+# ---------------------------------------------------------
+# Apply the custom HTML formatting functions to the relevant
+# columns.
+#
+# escape="html" allows the HTML generated by the formatting
+# functions to be rendered by itables.
 # =========================================================
 
 styled_threatened = threatened_display.style.format(
@@ -1599,7 +1759,7 @@ styled_threatened = threatened_display.style.format(
 
 
 # =========================================================
-# 10. TABLE CSS
+# 13. TABLE CSS
 # ---------------------------------------------------------
 # White table, no zebra striping, compact rows and
 # restrained styling.
@@ -1771,6 +1931,9 @@ table.dataTable tbody td:first-child {
 
 /* =========================================================
    RLE STATUS BADGES
+   ---------------------------------------------------------
+   The colour classes (.nba-cr, .nba-en, etc.) are also
+   reused by the small chips in the RLE 2022–2025 column.
    ========================================================= */
 
 .nba-rle-badge {
@@ -1800,6 +1963,11 @@ table.dataTable tbody td:first-child {
     color: #59631B;
 }
 
+.nba-nt {
+    background: #D6E57A;
+    color: #4B5A12;
+}
+
 .nba-lc {
     background: #B4D79E;
     color: #315A35;
@@ -1807,38 +1975,43 @@ table.dataTable tbody td:first-child {
 
 
 /* =========================================================
-   STATUS TRANSITION
+   STATUS TRANSITION (TWO CHIPS)
+   ---------------------------------------------------------
+   Layout:  [2022 status]  →  [2025 status]
+   Chips are smaller than the main RLE badges so that the
+   pair fits comfortably in the column.
    ========================================================= */
 
 .nba-transition {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 108px;
-    padding: 0.24rem 0.8rem;
+    gap: 0.35rem;
+    white-space: nowrap;
+}
+
+.nba-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    padding: 0.14rem 0.55rem;
     border-radius: 999px;
-    font-size: 0.84rem;
+    font-size: 0.78rem;
     font-weight: 400;
+    line-height: 1.2;
 }
 
-.nba-transition-cr {
-    background: #FF0000;
-    color: #FFFFFF;
+/* Neutral chip for labels without an RLE colour (e.g. NE) */
+.nba-chip-other {
+    background: #DDE2DD;
+    color: #31544C;
 }
 
-.nba-transition-en {
-    background: #FFAF42;
-    color: #795519;
-}
-
-.nba-transition-vu {
-    background: #FFE800;
-    color: #59631B;
-}
-
-.nba-transition-lc {
-    background: #B4D79E;
-    color: #315A35;
+.nba-arrow {
+    color: #667268;
+    font-size: 0.85rem;
+    line-height: 1;
 }
 
 
@@ -1959,14 +2132,25 @@ table.dataTable tbody td:first-child {
 
 
 # =========================================================
-# 11. DISPLAY THE INTERACTIVE TABLE
+# 14. DISPLAY THE INTERACTIVE TABLE
+# ---------------------------------------------------------
+# The data have already been sorted above, so order=[] keeps
+# the initial display order:
+#
+#   Uplisted → New type → Unchanged
+#
+# Users can still click any column header to change the sort
+# order interactively.
 # =========================================================
 
 show(
     styled_threatened,
     allow_html=True,
 
+    # -----------------------------------------------------
     # Set the relative width of each column
+    # -----------------------------------------------------
+
     columnDefs=[
         {"targets": 0, "width": "27%"},
         {"targets": 1, "width": "17%"},
@@ -1976,10 +2160,18 @@ show(
         {"targets": 5, "width": "18%"},
     ],
 
+    # -----------------------------------------------------
     # Interactive table options
+    # -----------------------------------------------------
+
     searching=True,
     paging=True,
+
+    # Keep the pandas-defined order when the table loads.
+    # This means Uplisted appears first, followed by
+    # New type and then Unchanged.
     order=[],
+
     scrollX=False,
     pageLength=10,
     lengthChange=True,
@@ -1994,7 +2186,7 @@ show(
 
 ------------------------------------------
 
-The BPTWG stakeholders are invited to review the <a href="https://docs.google.com/spreadsheets/d/1Sm2SlZ7UgGlqnOoaGKtv2S9DMFC8SCeGEenoJv6--XI/edit?usp=sharing">revised list</a> and provide comments and recommendations directly in the sheet. The stakeholders are also encouraged to note any additional data they have access to for consideration in future revisions. 
+**BPTWG stakeholders are invited to review the [revised list](https://docs.google.com/spreadsheets/d/1Sm2SlZ7UgGlqnOoaGKtv2S9DMFC8SCeGEenoJv6--XI/edit?usp=sharing) and provide comments and recommendations directly in the sheet. Stakeholders are also encouraged to flag any additional data they have access to that could inform the current revision of the 2025 list and future updates.**
 
 :::
 
