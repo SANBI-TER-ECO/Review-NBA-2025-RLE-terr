@@ -1415,7 +1415,7 @@ summary["% of remaining natural habitat in South Africa"] = (
 ```
 
 
-## Changes in ecosystem threat status between the 2022 gazetted list and the NBA 2025 list of threatened ecosystems{#sec-status-changes}
+## Changes in terrestrial ecosystem threat status: 2022 gazetted list vs NBA 2025{#sec-status-changes}
 
 @tbl-threatenedlist lists every ecosystem type that were listed as threatened on the NBA 2025 RLE assessments and shows what their threat status as published in the Government Gazette (Gazette Number 47526, Notice Number 2747), the transition between them, and its status change. Types that were newly delineated in the 2024 terrestrial ecosystem map are included where they were assessed as threatened. The sections below break these changes down by biome and by category transition. 
 
